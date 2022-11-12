@@ -20,7 +20,7 @@ class LinkedList{
         void addAtEnd(int);
         int removeFront();
         int removeLast();
-        // int removePos(int);
+        int removePos(int);
         int getSize();
         void addAtPos(int data , int pos);
         void addAtMiddle(int data);
@@ -103,9 +103,22 @@ int LinkedList::removeLast(){
 
 }
 
-// int LinkedList::removePos(){
+int LinkedList::removePos(int pos){
     
-// }
+    node *temp = first;
+    int count = 1;
+    while(count < pos-1){
+        temp = temp->next;
+        count++;
+    }
+
+    node *t = temp->next;
+    int d = t->data;
+    temp->next = temp->next->next;
+    delete t;
+    return d;
+
+}
 
 int LinkedList::getSize(){
     node *t;
@@ -214,8 +227,9 @@ int main(){
     // l.addAtMiddle(0);
     // l.print();
 
-    int a = l.middle();
-    cout<<a<<endl;
+    // int a = l.middle();
+    // cout<<a<<endl;
+    // cout<<l.removePos(3);
 
     return 0;
 }
